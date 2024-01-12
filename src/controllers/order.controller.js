@@ -75,7 +75,6 @@ exports.detail = async (req, res) => {
 
     let totalProduct = 0;
     let totalSupply = 0;
-    console.log(order);
     order.Products.forEach((product) => {
       totalProduct += product.quantity * product.unit_price;
     });
@@ -83,6 +82,7 @@ exports.detail = async (req, res) => {
       totalSupply += supply.quantity * supply.Supply?.unit_price;
     });
     if (!order) return errorHandler(res, err.ORDER_NOT_FOUND);
+
     return successHandler(res, { order, totalProduct, totalSupply }, 200);
   } catch (error) {
     console.log(error);

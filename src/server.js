@@ -17,6 +17,7 @@ let app = express();
 
 app.use(cors());
 app.use(cookieParser());
+app.use(express.json());
 
 // app.use(function (req, res, next) {
 //   // Website you wish to allow to connect
