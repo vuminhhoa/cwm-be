@@ -8,10 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Supply_Provider.init(
-    {note: DataTypes.STRING},
+    { note: DataTypes.STRING },
     {
       sequelize,
       modelName: "Supply_Provider",
+      tableName: "supply_providers",
     }
   );
   return Supply_Provider;

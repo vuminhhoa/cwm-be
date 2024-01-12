@@ -53,6 +53,7 @@ exports.active = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
+    console.log("login");
     const { email, password } = req.body;
     const user = await db.User.findOne({
       where: { email },

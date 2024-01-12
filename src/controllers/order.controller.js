@@ -63,16 +63,29 @@ exports.detail = async (req, res) => {
               model: db.Supply,
             },
           ],
+          raw: false,
         },
         {
           model: db.Product,
+          raw: false,
         },
       ],
       raw: false,
     });
+
+    let totalProduct = 0;
+    let totalSupply = 0;
+    console.log(order);
+    order.Products.forEach((product) => {
+      totalProduct += product.quantity * product.unit_price;
+    });
+    order.Supply_Orders.forEach((supply) => {
+      totalSupply += supply.quantity * supply.Supply?.unit_price;
+    });
     if (!order) return errorHandler(res, err.ORDER_NOT_FOUND);
-    return successHandler(res, { order }, 200);
+    return successHandler(res, { order, totalProduct, totalSupply }, 200);
   } catch (error) {
+    console.log(error);
     return errorHandler(res, error);
   }
 };
@@ -105,7 +118,7 @@ exports.update = async (req, res) => {
         where: { order_id: data?.id },
       });
       for (const product of products) {
-        await db.Product.create( 
+        await db.Product.create(
           {
             ...product,
             order_id: isHas.id,
