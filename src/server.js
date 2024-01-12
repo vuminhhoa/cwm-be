@@ -19,34 +19,34 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-// app.use(function (req, res, next) {
-//   // Website you wish to allow to connect
-//   res.setHeader("Access-Control-Allow-Origin", "*");
+app.use(function (req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
-//   // Request methods you wish to allow
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-//   );
+  // Request methods you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
 
-//   // Request headers you wish to allow
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "X-Requested-With, content-type",
-//     "x-access-token",
-//     "Authorization"
-//   );
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, content-type",
+    "x-access-token",
+    "Authorization"
+  );
 
-//   // Set to true if you need the website to include cookies in the requests sent
-//   // to the API (e.g. in case you use sessions)
-//   res.setHeader("Access-Control-Allow-Credentials", true);
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader("Access-Control-Allow-Credentials", true);
 
-//   // set cookie
-//   res.setHeader("Set-Cookie", "visited=true; Max-Age=3000; HttpOnly, Secure");
+  // set cookie
+  res.setHeader("Set-Cookie", "visited=true; Max-Age=3000; HttpOnly, Secure");
 
-//   // Pass to next layer of middleware
-//   next();
-// });
+  // Pass to next layer of middleware
+  next();
+});
 
 app.use(express.static("public"));
 app.use(bodyParser.json({ limit: "50mb" }));
