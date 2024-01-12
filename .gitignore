@@ -2,7 +2,6 @@
 /vendor
 /.idea
 .idea/
-.env
 package-lock.json
 yarn-lock
 .gitlab-ci.yml
