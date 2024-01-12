@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/cwt-be
+    destination: /home/ubuntu/cwm-be
 hooks:
   ApplicationStop:
     - location: scripts/application_stop.sh
